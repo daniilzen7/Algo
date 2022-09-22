@@ -27,7 +27,7 @@ def transort(matrix):
 
 def multiply(P, K):
     if len(P[0]) != len(K):
-        return -1
+        return Exception("Нельзя умножить эти матрицы")
     else:
         R = [[0 for i in range(len(K[0]))] for j in range(len(P))]
         for i in range(len(R)):
@@ -133,21 +133,35 @@ def get_back(matrix):
                 new_matrix[i][j] = new_matrix[i][j] / det_A
         return new_matrix
 
-matrix_1 = [
-    [2, 5, 7],
-    [6, 3, 4],
-    [5, -2, -3]
-]
+#matrix_1 = [
+#    [2, 5, 7],
+#    [6, 3, 4],
+#    [5, -2, -3]
+#]
 
-matrix_2 = [
-    [41, 433, -31, 123, 34, 0],
-    [-412, 244, 4221, 13, 4, 8],
-    [93, 0, 121, 93, 62, 55],
-    [-12, -15, 24, 7, -8, 533],
-    [912, 51, -81, 24, 0, 412],
-    [142, 812, 0, 512, -125, 15],
-    [615, -72, 71, 51, 6712, 15]
-]
+#matrix_2 = [
+#    [41, 433, -31, 123, 34, 0],
+#    [-412, 244, 4221, 13, 4, 8],
+#    [93, 0, 121, 93, 62, 55],
+#    [-12, -15, 24, 7, -8, 533],
+#    [912, 51, -81, 24, 0, 412],
+#    [142, 812, 0, 512, -125, 15],
+#    [615, -72, 71, 51, 6712, 15]
+#]
 
-
+var = input("a) транспортировать b) умножить c) определить ранг d) получить обратную матрицу\n")
+m, n = map(int, input("Введите размер матрицы 1(m n)\n").split())
+print("Введите матрицу")
+matrix_1 = input_matrix(m, n)
+if var == "a":
+    print_m(transort(matrix_1))
+if var == "b":
+    p, k = map(int, input("Введите размер матрицы 2(m n)\n").split())
+    print("Введите матрицу")
+    matrix_2 = input_matrix(p, k)
+    print_m(multiply(matrix_1, matrix_2))
+if var == "c":
+    print(rank(matrix_1))
+if var == "d":
+    print_m(get_back(matrix_1))
 
